@@ -86,7 +86,7 @@ pipeline {
                 - Surefire Reports: ${env.BUILD_URL}artifact/target/surefire-reports/
                 - Allure Results: ${env.BUILD_URL}artifact/allure-results/
                 """,
-                to: 'gajohnson@example.com',  // CHANGE TO YOUR EMAIL
+                to: 'gajohnson@griddynamics.com',  //
                 attachLog: currentBuild.currentResult == 'FAILURE'
             )
         }
