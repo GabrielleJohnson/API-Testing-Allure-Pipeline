@@ -20,11 +20,12 @@ pipeline {
     }
 
     post {
+        always {
             allure([
                 includeProperties: false,
                 jdk: '',
                 properties: [],
-                //reportBuildPolicy: 'ALWAYS',
+                reportBuildPolicy: 'ALWAYS',
                 results: [[path: 'target/allure-results']]  // Changed path
             ])
 
@@ -35,3 +36,23 @@ pipeline {
             )
         }
     }
+}
+
+stage('Debug Email') {
+    steps {
+        script {
+            // Test if email variables are accessible
+            echo "JOB_NAME: ${env.JOB_NAME}"
+            echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+            echo "BUILD_URL: ${env.BUILD_URL}"
+
+            // Try a simple test email
+            emailext(
+                to: 'johnsongabrielle123@gmail.com',
+                subject: "TEST EMAIL from Jenkins",
+                body: "This is a test email sent at ${new Date()}",
+                mimeType: 'text/plain'
+            )
+        }
+    }
+}
