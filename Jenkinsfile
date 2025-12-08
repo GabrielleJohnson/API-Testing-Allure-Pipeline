@@ -8,31 +8,29 @@ pipeline {
     environment {
         API_KEY = credentials('trello-api-key')
         API_TOKEN = credentials('trello-api-token')
+        GITHUB_TOKEN = credentials('github-token')  // GitHub PAT
     }
 
     stages {
-        stage('Debug Email Configuration') {
+        stage('Checkout') {
             steps {
-                script {
-                    echo "=== Debug Information ==="
-                    echo "JOB_NAME: ${env.JOB_NAME}"
-                    echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
-                    echo "BUILD_URL: ${env.BUILD_URL}"
-                    echo "EMAIL TO: johnsongabrielle123@gmail.com"
-                    echo ""
-
-                    // Test sending a simple email
-                    emailext(
-                        to: 'johnsongabrielle123@gmail.com',
-                        subject: "DEBUG TEST from Jenkins",
-                        body: "This is a debug test email sent at ${new Date()}",
-                        mimeType: 'text/plain'
-                    )
-
-                    echo "Debug email sent (or attempted)"
-                }
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        url: 'https://${GITHUB_TOKEN}@github.com/GabrielleJohnson/API-Testing-Allure-Pipeline.git'
+                    ]]
+                ])
             }
         }
+
+        stage('Run Tests') {
+            steps {
+                sh 'mvn clean test -Dapi.key=${API_KEY} -Dapi.token=${API_TOKEN}'
+            }
+        }
+    }
 
         stage('Run Tests') {
             steps {
