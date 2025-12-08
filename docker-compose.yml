@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Test runner
+  test-runner:
+    build: .
+    container_name: test-runner
+    environment:
+      - API_BASE_URL=${API_BASE_URL:-https://api.trello.com/1/}
+      - API_KEY=${API_KEY}
+      - API_TOKEN=${API_TOKEN}
+      - ALLURE_RESULTS_PATH=/app/allure-results
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./surefire-reports:/app/surefire-reports
+      - ./target:/app/target
+    networks:
+      - test-network
+    command: >
+      mvn clean test allure:report
+      -Dapi.base.url=${API_BASE_URL:-https://api.trello.com/1/}
+      -Dapi.key=${API_KEY}
+      -Dapi.token=${API_TOKEN}
+      -Dallure.results.directory=/app/allure-results
+
+  # Allure UI service
+  allure:
+    image: frankescobar/allure-docker-service:latest
+    container_name: allure-report
+    environment:
+      - CHECK_RESULTS_EVERY_SECONDS=3
+      - KEEP_HISTORY=1
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./allure-reports:/app/default-reports
+    depends_on:
+      - test-runner
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

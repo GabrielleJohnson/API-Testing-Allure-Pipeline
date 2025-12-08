@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-12-02T07:52:26 EST" name="Command line suite" finished-at="2025-12-02T07:52:34 EST" duration-ms="8164">
+    <groups>
+    </groups>
+    <test started-at="2025-12-02T07:52:26 EST" name="Command line test" finished-at="2025-12-02T07:52:34 EST" duration-ms="8164">
+      <class name="com.testing.tests.restassured.boardTestsRestAssured">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:29 EST" name="setup" finished-at="2025-12-02T07:52:29 EST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testCreateBoard()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:29 EST" name="testCreateBoard" finished-at="2025-12-02T07:52:31 EST" duration-ms="1820" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateBoard -->
+        <test-method signature="testGetBoard()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:31 EST" name="testGetBoard" finished-at="2025-12-02T07:52:31 EST" depends-on-methods="com.testing.tests.restassured.boardTestsRestAssured.testCreateBoard" duration-ms="280" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetBoard -->
+        <test-method signature="testUpdateBoard()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:31 EST" name="testUpdateBoard" finished-at="2025-12-02T07:52:31 EST" depends-on-methods="com.testing.tests.restassured.boardTestsRestAssured.testGetBoard" duration-ms="473" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateBoard -->
+        <test-method signature="testDeleteBoard()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:31 EST" name="testDeleteBoard" finished-at="2025-12-02T07:52:32 EST" depends-on-methods="com.testing.tests.restassured.boardTestsRestAssured.testUpdateBoard" duration-ms="889" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteBoard -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.testing.tests.restassured.boardTestsRestAssured@2de23121]" started-at="2025-12-02T07:52:32 EST" name="teardown" finished-at="2025-12-02T07:52:32 EST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.testing.tests.restassured.boardTestsRestAssured -->
+      <class name="com.testing.tests.okhttp.BoardTestsOkHttp">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:32 EST" name="setup" finished-at="2025-12-02T07:52:32 EST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testCreateBoard()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:32 EST" name="testCreateBoard" finished-at="2025-12-02T07:52:33 EST" duration-ms="498" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateBoard -->
+        <test-method signature="testGetBoard()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:33 EST" name="testGetBoard" finished-at="2025-12-02T07:52:33 EST" depends-on-methods="com.testing.tests.okhttp.BoardTestsOkHttp.testCreateBoard" duration-ms="502" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetBoard -->
+        <test-method signature="testUpdateBoard()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:33 EST" name="testUpdateBoard" finished-at="2025-12-02T07:52:34 EST" depends-on-methods="com.testing.tests.okhttp.BoardTestsOkHttp.testGetBoard" duration-ms="338" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateBoard -->
+        <test-method signature="testDeleteBoard()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:34 EST" name="testDeleteBoard" finished-at="2025-12-02T07:52:34 EST" depends-on-methods="com.testing.tests.okhttp.BoardTestsOkHttp.testUpdateBoard" duration-ms="745" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteBoard -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.testing.tests.okhttp.BoardTestsOkHttp@2c07545f]" started-at="2025-12-02T07:52:34 EST" name="teardown" finished-at="2025-12-02T07:52:34 EST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.testing.tests.okhttp.BoardTestsOkHttp -->
+      <class name="com.testing.tests.retrofit.BoardTestsRetrofit">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:26 EST" name="setup" finished-at="2025-12-02T07:52:26 EST" duration-ms="17" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testCreateBoard()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:26 EST" name="testCreateBoard" finished-at="2025-12-02T07:52:27 EST" duration-ms="1188" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateBoard -->
+        <test-method signature="testGetBoard()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:28 EST" name="testGetBoard" finished-at="2025-12-02T07:52:28 EST" depends-on-methods="com.testing.tests.retrofit.BoardTestsRetrofit.testCreateBoard" duration-ms="137" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetBoard -->
+        <test-method signature="testUpdateBoard()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:28 EST" name="testUpdateBoard" finished-at="2025-12-02T07:52:28 EST" depends-on-methods="com.testing.tests.retrofit.BoardTestsRetrofit.testGetBoard" duration-ms="532" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateBoard -->
+        <test-method signature="testDeleteBoard()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:28 EST" name="testDeleteBoard" finished-at="2025-12-02T07:52:29 EST" depends-on-methods="com.testing.tests.retrofit.BoardTestsRetrofit.testUpdateBoard" duration-ms="609" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteBoard -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.testing.tests.retrofit.BoardTestsRetrofit@6f4a47c7]" started-at="2025-12-02T07:52:29 EST" name="teardown" finished-at="2025-12-02T07:52:29 EST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.testing.tests.retrofit.BoardTestsRetrofit -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

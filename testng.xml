@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="API Automation Suite" parallel="tests" thread-count="3">
+    <test name="REST Assured Tests">
+        <classes>
+            <class name="com.testing.tests.restassured.boardTestsRestAssured"/>
+        </classes>
+    </test>
+
+    <test name="Retrofit Tests">
+        <classes>
+            <class name="com.testing.tests.retrofit.BoardTestsRetrofit"/>
+        </classes>
+    </test>
+
+    <test name="OkHttp Tests">
+        <classes>
+            <class name="com.testing.tests.okhttp.BoardTestsOkHttp"/>
+        </classes>
+    </test>
+</suite>
