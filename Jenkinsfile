@@ -19,7 +19,7 @@ pipeline {
                     branches: [[name: '*/master']],
                     extensions: [],
                     userRemoteConfigs: [[
-                        url: 'https://${GITHUB_TOKEN}@github.com/GabrielleJohnson/API-Testing-Allure-Pipeline.git'
+                        url: "https://${GITHUB_TOKEN}@github.com/GabrielleJohnson/API-Testing-Allure-Pipeline.git"
                     ]]
                 ])
             }
@@ -27,14 +27,6 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'mvn clean test -Dapi.key=${API_KEY} -Dapi.token=${API_TOKEN}'
-            }
-        }
-    }
-
-        stage('Run Tests') {
-            steps {
-                checkout scm
                 sh 'mvn clean test -Dapi.key=${API_KEY} -Dapi.token=${API_TOKEN}'
             }
         }
