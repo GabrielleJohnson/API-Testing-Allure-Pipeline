@@ -32,7 +32,7 @@ pipeline {
             emailext(
                 subject: "Test Results: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Tests completed with status: ${currentBuild.currentResult}",
-                to: 'gajohnson@griddynamics.com'
+                to: 'johnsongabrielle123@gmail.com'
             )
         }
     }
