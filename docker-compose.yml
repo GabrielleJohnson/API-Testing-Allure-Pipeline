@@ -19,7 +19,6 @@ services:
     ports:
       - "5050:5050"
 
-    # Map volumes to share results with your host machine (optional but recommended)
     volumes:
       - ./allure-results:/app/allure-results
       - ./surefire-reports:/app/surefire-reports
