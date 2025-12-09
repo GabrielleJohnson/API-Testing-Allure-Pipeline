@@ -11,12 +11,12 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BoardTestsOkHttp extends BaseTest {
+public class BoardTestsOkHttpTest extends BaseTest {
     private OkHttpClient client;
     private ObjectMapper objectMapper;
     private String boardId;
 
-        public BoardTestsOkHttp() {
+        public BoardTestsOkHttpTest() {
         this.client = new OkHttpClient();
         this.objectMapper = new ObjectMapper();
     }

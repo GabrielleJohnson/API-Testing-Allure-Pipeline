@@ -27,7 +27,6 @@ public class DockerTestRunner {
         if (inDocker) {
             System.out.println("SUCCESS: Tests are executing inside a Linux-based Docker container.");
         } else {
-            // This is the key change: It prints a warning but does not assert false (does not fail the test)
             System.out.println("WARNING: Environment is NOT Linux. Running directly on host OS (Jenkins Agent).");
         }
     }
@@ -41,7 +40,6 @@ public class DockerTestRunner {
         System.out.println("-> API_KEY Status: " + (apiKey != null ? "SET" : "NOT SET"));
         System.out.println("-> API_TOKEN Status: " + (apiToken != null ? "SET" : "NOT SET"));
 
-        // If these are mandatory for your API tests, assert they exist
         assert apiKey != null : "FAIL: API_KEY environment variable is missing.";
         assert apiToken != null : "FAIL: API_TOKEN environment variable is missing.";
 

@@ -8,7 +8,7 @@ import retrofit2.Response;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BoardTestsRetrofit extends BaseTest {
+public class BoardTestsRetrofitTest extends BaseTest {
     private TrelloApiClient client;
     private String boardId;
 

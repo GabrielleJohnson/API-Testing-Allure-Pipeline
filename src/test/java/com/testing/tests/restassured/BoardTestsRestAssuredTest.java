@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class boardTestsRestAssured extends BaseTest {
+public class BoardTestsRestAssuredTest extends BaseTest {
     private String boardId;
 
     @Test
