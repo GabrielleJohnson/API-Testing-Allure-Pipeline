@@ -1,52 +1,48 @@
+# ----------------------------------------------------------------------
+# Stage 1: Builder - Downloads dependencies and compiles once (as root user)
+# ----------------------------------------------------------------------
 FROM maven:3.9.9-eclipse-temurin-21-alpine AS builder
 
-# Install Chrome for Selenium and Allure
-RUN apk add --no-cache \
-    chromium \
-    chromium-chromedriver \
-    curl \
-    && rm -rf /var/cache/apk/*
+# Install system dependencies (Chromium/Curl/Allure)
+RUN apk add --no-cache chromium chromium-chromedriver curl
 
-# Install Allure
+# Install Allure CLI
 RUN curl -o allure-2.24.1.tgz -L https://github.com/allure-framework/allure2/releases/download/2.24.1/allure-2.24.1.tgz \
     && tar -zxvf allure-2.24.1.tgz -C /opt \
-    && mv /opt/allure-2.24.1 /opt/allure \
-    && ln -s /opt/allure/bin/allure /usr/bin/allure \
-    && rm allure-2.24.1.tgz
+    && mv /opt/allure-2.24.1 /opt/allure
 
-# Set Chrome environment
-ENV CHROME_BIN=/usr/bin/chromium-browser \
-    CHROME_DRIVER=/usr/bin/chromedriver \
-    ALLURE_HOME=/opt/allure
+ENV PATH="/opt/allure/bin:$PATH"
 
 WORKDIR /app
+
+# Copy all source files and configuration
 COPY . .
-RUN mvn clean compile -DskipTests
+RUN chmod -R 777 /app
 
-# Runtime image
-FROM eclipse-temurin:21-jre-alpine
+# Compile and fetch dependencies (this populates /root/.m2 and /app/target)
+RUN mvn compile -DskipTests
 
-# Install Chrome and Allure dependencies
-RUN apk add --no-cache \
-    chromium \
-    chromium-chromedriver \
-    curl \
-    bash \
-    && rm -rf /var/cache/apk/*
+# ----------------------------------------------------------------------
+# Stage 2: Final Test Runner - Copies only necessary, clean artifacts
+# ----------------------------------------------------------------------
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS test-runner-final
 
-# Copy Allure from builder
+# Install system dependencies again
+RUN apk add --no-cache chromium chromium-chromedriver curl
+
+# Copy Allure installation
 COPY --from=builder /opt/allure /opt/allure
-
-# Set environment
-ENV CHROME_BIN=/usr/bin/chromium-browser \
-    CHROME_DRIVER=/usr/bin/chromedriver \
-    ALLURE_HOME=/opt/allure \
-    PATH=$PATH:/opt/allure/bin
+ENV PATH="/opt/allure/bin:$PATH"
 
 WORKDIR /app
-COPY --from=builder /app /app
 
-# Create directories for results
-RUN mkdir -p /app/allure-results /app/surefire-reports
+# Copy the local Maven repository cache (to avoid re-downloading)
+COPY --from=builder /root/.m2 /root/.m2
 
-CMD ["mvn", "test", "allure:report"]
+# Copy the actual source code and configuration files
+COPY pom.xml .
+COPY src src
+
+# Create the output directories required for Allure and Surefire *before* running tests
+RUN mkdir -p /app/allure-results /app/surefire-reports && \
+    chmod -R 777 /app

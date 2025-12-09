@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>API_Testing_v3</artifactId>
+    <artifactId>API-Testing-Allure-Pipeline</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -102,16 +102,28 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M9</version>
-
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Runner.java</include>
+                    </includes>
 
                     <systemPropertyVariables>
-                        <cucumber.features>src/test/resources/features</cucumber.features>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
+
+                    <!--argLine>
+                        -Dcucumber.options="-tags @run"
+                    </argLine-->
+
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>3.0.0-M9</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
