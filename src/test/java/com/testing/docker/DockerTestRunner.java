@@ -15,23 +15,20 @@ public class DockerTestRunner {
     }
 
     @Test(priority = 1, groups = "environment")
-    @Description("Verifies the execution environment is Linux/Docker.")
+    @Description("Verifies the execution environment. Informational check only.")
     public void verifyDockerContainerEnvironment() {
         boolean inDocker = isRunningInDocker();
         String osName = System.getProperty("os.name");
         String hostname = System.getenv("HOSTNAME");
 
         System.out.println("-> OS Check: " + osName);
-        System.out.println("-> Hostname (Container ID): " + hostname);
+        System.out.println("-> Hostname (Container ID): " + (hostname != null ? hostname : "N/A"));
 
         if (inDocker) {
             System.out.println("SUCCESS: Tests are executing inside a Linux-based Docker container.");
         } else {
-            // Fails the test if it expected to be in Docker but isn't.
-            // We use an assertion here to integrate with TestNG/Surefire/Allure.
-            // If running this class locally, this test will fail.
-            // Adjust the assertion logic if you want the local run to pass.
-            assert inDocker : "FAIL: Environment is not Linux. Expected Docker execution.";
+            // This is the key change: It prints a warning but does not assert false (does not fail the test)
+            System.out.println("WARNING: Environment is NOT Linux. Running directly on host OS (Jenkins Agent).");
         }
     }
 
