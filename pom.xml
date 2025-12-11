@@ -114,7 +114,7 @@
                 <version>${allure.maven.version}</version>
                 <configuration>
                     <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
-                    <resultsDirectory>target/allure-results</resultsDirectory>
+                    <resultsDirectory>target/allure-reports</resultsDirectory>
                     <allureDownloadUrl>https://github.com/allure-framework/allure2/releases/download/${allure.version}/allure-${allure.version}.zip</allureDownloadUrl>
                 </configuration>
             </plugin>
