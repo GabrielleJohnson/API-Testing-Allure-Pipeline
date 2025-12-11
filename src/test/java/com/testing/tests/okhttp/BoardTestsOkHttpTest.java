@@ -66,7 +66,7 @@ public class BoardTestsOkHttpTest extends BaseTest {
             assertThat(response.code()).isEqualTo(200);
 
             Board board = objectMapper.readValue(response.body().string(), Board.class);
-            //assertThat(board.getId()).isEqualTo(boardId);
+            assertThat(board.getId()).isEqualTo(boardId);
             assertThat(board.getName()).isEqualTo("Test Board OkHttp");
         }
     }

@@ -35,7 +35,7 @@ public class BoardTestsRestAssuredTest extends BaseTest {
         boardId = testSteps.getActualResponse().getId();
 
         // Essential assertions only
-        assertThat(boardId).isNotNull().isNotEmpty();
+        assertThat(boardId).isNull();
 
     }
 
@@ -58,7 +58,7 @@ public class BoardTestsRestAssuredTest extends BaseTest {
 
     @Test(dependsOnMethods = "testGetBoard")
     public void testUpdateBoard() {
-        String updatedName = "Updated ngjh Assured";
+        String updatedName = "Updated Board REST Assured";
         String updatedDesc = "Updated description";
 
         testSteps.buildRequestWithBody(
