@@ -91,7 +91,7 @@
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
-                        <!--include>**/*Runner.java</include-->
+                        <include>**/*Runner.java</include>
                     </includes>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>

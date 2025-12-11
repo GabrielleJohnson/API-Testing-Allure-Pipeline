@@ -2,19 +2,19 @@
 <suite name="API Automation Suite" parallel="tests" thread-count="3">
     <test name="REST Assured Tests">
         <classes>
-            <class name="com.testing.tests.restassured.boardTestsRestAssured"/>
+            <class name="com.testing.tests.restassured.BoardTestsRestAssuredTest"/>
         </classes>
     </test>
 
     <test name="Retrofit Tests">
         <classes>
-            <class name="com.testing.tests.retrofit.BoardTestsRetrofit"/>
+            <class name="com.testing.tests.retrofit.BoardTestsRetrofitTest"/>
         </classes>
     </test>
 
     <test name="OkHttp Tests">
         <classes>
-            <class name="com.testing.tests.okhttp.BoardTestsOkHttp"/>
+            <class name="com.testing.tests.okhttp.BoardTestsOkHttpTest"/>
         </classes>
     </test>
 </suite>

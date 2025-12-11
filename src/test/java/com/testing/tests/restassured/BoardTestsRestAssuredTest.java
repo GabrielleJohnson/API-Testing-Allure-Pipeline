@@ -35,7 +35,7 @@ public class BoardTestsRestAssuredTest extends BaseTest {
         boardId = testSteps.getActualResponse().getId();
 
         // Essential assertions only
-        assertThat(boardId).isNull();
+        assertThat(boardId).isNotNull().isNotEmpty();
 
     }
 
