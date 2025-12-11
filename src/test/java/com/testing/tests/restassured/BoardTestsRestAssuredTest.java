@@ -58,7 +58,7 @@ public class BoardTestsRestAssuredTest extends BaseTest {
 
     @Test(dependsOnMethods = "testGetBoard")
     public void testUpdateBoard() {
-        String updatedName = "Updated Board REST Assured";
+        String updatedName = "Updated ngjh Assured";
         String updatedDesc = "Updated description";
 
         testSteps.buildRequestWithBody(
