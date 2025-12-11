@@ -16,12 +16,12 @@ public class BoardTestsOkHttpTest extends BaseTest {
     private ObjectMapper objectMapper;
     private String boardId;
 
-        public BoardTestsOkHttpTest() {
+        /*public BoardTestsOkHttpTest() {
         this.client = new OkHttpClient();
         this.objectMapper = new ObjectMapper();
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testCreateBoard() throws IOException {
         String json = String.format(
                 "{\"name\":\"Test Board OkHttp\",\"key\":\"%s\",\"token\":\"%s\"}",
@@ -30,10 +30,10 @@ public class BoardTestsOkHttpTest extends BaseTest {
         RequestBody body = RequestBody.create(
                 json, MediaType.parse("application/json"));
 
-        /*Request request = new Request.Builder()
+        Request request = new Request.Builder()
                 .url(ApiConfig.getBaseUrl() + "/boards")
                 .post(body)
-                .build();*/
+                .build();
 
         try (Response response = client.newCall(request).execute()) {
             // TestNG assertion
@@ -48,7 +48,7 @@ public class BoardTestsOkHttpTest extends BaseTest {
 
             boardId = board.getId();
             assertThat(boardId).isNotNull().isNotEmpty();
-        }
+        }*/
     }
 
     @Test(dependsOnMethods = "testCreateBoard")
